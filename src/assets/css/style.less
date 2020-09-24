@@ -1,0 +1,26 @@
+// out: style.css
+
+@mainColor: black;
+
+body {
+  background-color: whitesmoke !important;
+}
+
+.ribbon(@back-color, @font-color) {
+  width: 100%;
+  background-color: @back-color;
+  color: @font-color;
+}
+
+.header {
+  .ribbon(lighten(@mainColor, 25%), whitesmoke);
+}
+
+.app {
+  padding: 15px;
+  .ribbon(lighten(@mainColor, 50%), @mainColor);
+}
+
+.footer {
+  .ribbon(darken(@mainColor, 15%), whitesmoke);
+}

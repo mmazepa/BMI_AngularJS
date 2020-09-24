@@ -1,0 +1,19 @@
+body {
+  background-color: whitesmoke !important;
+}
+.header {
+  width: 100%;
+  background-color: #404040;
+  color: whitesmoke;
+}
+.app {
+  padding: 15px;
+  width: 100%;
+  background-color: #808080;
+  color: black;
+}
+.footer {
+  width: 100%;
+  background-color: #000000;
+  color: whitesmoke;
+}
