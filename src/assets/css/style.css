@@ -1,19 +1,33 @@
 body {
   background-color: whitesmoke !important;
 }
-.header {
+body .header {
   width: 100%;
   background-color: #404040;
   color: whitesmoke;
 }
-.app {
+body .app {
   padding: 15px;
   width: 100%;
   background-color: #808080;
   color: black;
+  background-image: linear-gradient(to right, gray, silver) !important;
 }
-.footer {
+body .app p input {
+  width: 50%;
+  height: 75px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 30px;
+}
+body .app .yourBMI {
+  text-align: center;
+  font-size: 200%;
+}
+body .footer {
   width: 100%;
   background-color: #000000;
   color: whitesmoke;
+  text-align: center;
 }
