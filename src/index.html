@@ -15,12 +15,36 @@
             <h1>Kalkulator wskaźnika BMI</h1>
         </div>
         <div class="app container" data-ng-app="">
-            <p><input type="text" class="form-control" placeholder="waga w kilogramach" data-ng-model="weight"></p>
-            <p><input type="text" class="form-control" placeholder="wzrost w centymetrach" data-ng-model="height"></p>
+            <p>
+                <input  type="number"
+                        class="form-control"
+                        placeholder="waga w kilogramach"
+                        data-ng-model="weight"
+                        min="0"
+                        step="1">
+            </p>
+            <p>
+                <input  type="number"
+                        class="form-control"
+                        placeholder="wzrost w centymetrach"
+                        data-ng-model="height"
+                        min="0"
+                        step="1">
+            </p>
             <p class="yourBMI">
-                <!-- <strong>Twoje BMI:</strong> -->
                 {{ (weight>0) && (height>0) ? "Twoje BMI: " + weight/(height/100*height/100) : null }}
             </p>
+            <div class="infoBMI">
+                <p><strong>Zakresy wartości BMI:</strong></p>
+                <p>mniej niż 16 - wygłodzenie</p>
+                <p>16 - 16.99 - wychudzenie</p>
+                <p>17 - 18.49 - niedowaga</p>
+                <p>18.5 - 24.99 - wartość prawidłowa</p>
+                <p>25 - 29.99 - nadwaga</p>
+                <p>30 - 34.99 - I stopień otyłości</p>
+                <p>35 - 39.99 - II stopień otyłości</p>
+                <p>powyżej 40 - otyłość skrajna</p>
+            </div>
         </div>
         <div class="footer container">
             © Mariusz Mazepa 2020

@@ -23,7 +23,12 @@ body .app p input {
 }
 body .app .yourBMI {
   text-align: center;
+  margin-top: 50px;
   font-size: 200%;
+}
+body .app .infoBMI {
+  text-align: center;
+  margin-top: 50px;
 }
 body .footer {
   width: 100%;
