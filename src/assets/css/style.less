@@ -39,20 +39,31 @@ html {
         color: white;
       }
       .infoBMI {
-        background-color: whitesmoke;
-        opacity: 0.75;
-        border-radius: 10px;
-        padding: 10px;
         table {
           width: 100%;
           font-size: 20px;
-          tr, th, th {
-
+          background-color: darken(lightblue, 15%);//whitesmoke;
+          color: lighten(black, 20%);
+          opacity: 0.75;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          th, td {
+            padding: 2.5px 10px;
+          }
+          tr:first-child {
+            color: whitesmoke;
+            border-radius: 25px;
           }
           tr:not(:first-child):hover {
-            background-color: lightblue;
+            background-color: lighten(navy, 50%) !important;
             color: navy;
             transition: 0.5s;
+          }
+          tr:nth-child(even):not(:first-child) {
+            background-color: lighten(lightblue, 10%);
+          }
+          tr:nth-child(odd):not(:first-child) {
+            background-color: lighten(lightblue, 5%);
           }
         }
       }

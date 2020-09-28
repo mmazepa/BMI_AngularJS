@@ -37,20 +37,33 @@ html body .app .yourBMI {
   font-size: 200%;
   color: white;
 }
-html body .app .infoBMI {
-  background-color: whitesmoke;
-  opacity: 0.75;
-  border-radius: 10px;
-  padding: 10px;
-}
 html body .app .infoBMI table {
   width: 100%;
   font-size: 20px;
+  background-color: #72bcd4;
+  color: #333333;
+  opacity: 0.75;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+html body .app .infoBMI table th,
+html body .app .infoBMI table td {
+  padding: 2.5px 10px;
+}
+html body .app .infoBMI table tr:first-child {
+  color: whitesmoke;
+  border-radius: 25px;
 }
 html body .app .infoBMI table tr:not(:first-child):hover {
-  background-color: lightblue;
+  background-color: #8080ff !important;
   color: navy;
   transition: 0.5s;
+}
+html body .app .infoBMI table tr:nth-child(even):not(:first-child) {
+  background-color: #d4ebf2;
+}
+html body .app .infoBMI table tr:nth-child(odd):not(:first-child) {
+  background-color: #c1e1ec;
 }
 html body .footer {
   width: 100%;
