@@ -15,6 +15,10 @@
             <h1>Kalkulator wskaźnika BMI</h1>
         </div>
         <div class="app container" data-ng-app="">
+            <form ng-init="lang='pl'">
+                Polski <input type="radio" ng-model="lang" value="pl" checked="checked">
+                English <input type="radio" ng-model="lang" value="eng">
+            </form>
             <div class="row">
                 <div class="col-sm-6">
                     <p>
@@ -38,42 +42,54 @@
                     </p>
                 </div>
                 <div class="col-sm-6 infoBMI">
-                    <table>
+                    <table ng-switch="lang">
                         <tr>
-                            <th>Zakresy wartości BMI</th>
-                            <th>Znaczenie zakresu</th>
+                            <th ng-switch-when="pl">Zakresy wartości BMI</th>
+                            <th ng-switch-when="pl">Znaczenie zakresu</th>
+                            <th ng-switch-when="eng">Range of BMI values</th>
+                            <th ng-switch-when="eng">Meaning of range</th>
                         </tr>
                         <tr>
-                            <td>mniej niż 16</td>
-                            <td>wygłodzenie</td>
+                            <td ng-switch-when="pl">mniej niż 16</td>
+                            <td ng-switch-when="pl">wygłodzenie</td>
+                            <td ng-switch-when="eng">less than 16</td>
+                            <td ng-switch-when="eng">starvation</td>
                         </tr>
                         <tr>
                             <td>16 - 16.99</td>
-                            <td>wychudzenie</td>
+                            <td ng-switch-when="pl">wychudzenie</td>
+                            <td ng-switch-when="eng">emaciation</td>
                         </tr>
                         <tr>
                             <td>17 - 18.49</td>
-                            <td>niedowaga</td>
+                            <td ng-switch-when="pl">niedowaga</td>
+                            <td ng-switch-when="eng">underweight</td>
                         </tr>
                         <tr>
                             <td>18.5 - 24.99</td>
-                            <td>wartość prawidłowa</td>
+                            <td ng-switch-when="pl">wartość prawidłowa</td>
+                            <td ng-switch-when="eng">correct value</td>
                         </tr>
                         <tr>
                             <td>25 - 29.99</td>
-                            <td>nadwaga</td>
+                            <td ng-switch-when="pl">nadwaga</td>
+                            <td ng-switch-when="eng">overweight</td>
                         </tr>
                         <tr>
                             <td>30 - 34.99</td>
-                            <td>I stopień otyłości</td>
+                            <td ng-switch-when="pl">I stopień otyłości</td>
+                            <td ng-switch-when="eng">I degree of obesity</td>
                         </tr>
                         <tr>
                             <td>35 - 39.99</td>
-                            <td>II stopień otyłości</td>
+                            <td ng-switch-when="pl">II stopień otyłości</td>
+                            <td ng-switch-when="eng">II degree of obesity</td>
                         </tr>
                         <tr>
-                            <td>powyżej 40</td>
-                            <td>otyłość skrajna</td>
+                            <td ng-switch-when="pl">powyżej 40</td>
+                            <td ng-switch-when="pl">otyłość skrajna</td>
+                            <td ng-switch-when="eng">more than 40</td>
+                            <td ng-switch-when="eng">extreme obesity</td>
                         </tr>
                     </table>
                 </div>

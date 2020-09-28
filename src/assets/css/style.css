@@ -23,6 +23,13 @@ html body .app {
   background-repeat: repeat-y;
   background-size: 100%;
 }
+html body .app form {
+  padding: 10px;
+  color: #cfcfcf;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: right;
+}
 html body .app p input {
   width: 100%;
   height: 75px;
