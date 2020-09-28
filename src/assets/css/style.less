@@ -1,42 +1,68 @@
 // out: style.css
 
-@mainColor: black;
+html {
+  min-height: 100vh;
 
-body {
-  background-color: whitesmoke !important;
+  body {
+    background-color: whitesmoke !important;
 
-  .header {
-    .ribbon(lighten(@mainColor, 25%), whitesmoke);
-  }
-
-  .app {
-    padding: 15px;
-    .ribbon(lighten(@mainColor, 50%), @mainColor);
-    background-image: linear-gradient(to right, gray, silver) !important;
-    p {
-      input {
-        width: 50%;
-        height: 75px;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-        font-size: 30px;
+    .header {
+      .ribbon(whitesmoke, navy);
+      text-shadow: 2px 2px lightblue;
+      h1 {
+        font-weight: bold;
       }
     }
-    .yourBMI {
-      text-align: center;
-      margin-top: 50px;
-      font-size: 200%;
-    }
-    .infoBMI {
-      text-align: center;
-      margin-top: 50px;
-    }
-  }
 
-  .footer {
-    .ribbon(darken(@mainColor, 15%), whitesmoke);
-    text-align: center;
+    .app {
+      width: 100%;
+      padding: 15px;
+      .ribbon(lighten(cyan, 40%), black);
+      background-image: linear-gradient(to right, lighten(cyan, 40%), silver) !important;
+      background-image: url("../images/MaxPixel.net-Green-Texture-Background-Triangle-Low-Poly-1239778.jpg") !important;
+      background-repeat: repeat-y;
+      background-size: 100%;
+      p {
+        input {
+          width: 100%;
+          height: 75px;
+          margin-left: auto;
+          margin-right: auto;
+          text-align: center;
+          font-size: 30px;
+        }
+      }
+      .yourBMI {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 200%;
+        color: white;
+      }
+      .infoBMI {
+        background-color: whitesmoke;
+        opacity: 0.75;
+        border-radius: 10px;
+        padding: 10px;
+        table {
+          width: 100%;
+          font-size: 20px;
+          tr, th, th {
+
+          }
+          tr:not(:first-child):hover {
+            background-color: lightblue;
+            color: navy;
+            transition: 0.5s;
+          }
+        }
+      }
+    }
+
+    .footer {
+      .ribbon(whitesmoke, dimgray);
+      text-align: center;
+      margin-top: 15px;
+    }
   }
 }
 

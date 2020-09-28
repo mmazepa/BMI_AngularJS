@@ -15,39 +15,73 @@
             <h1>Kalkulator wskaźnika BMI</h1>
         </div>
         <div class="app container" data-ng-app="">
-            <p>
-                <input  type="number"
-                        class="form-control"
-                        placeholder="waga w kilogramach"
-                        data-ng-model="weight"
-                        min="0"
-                        step="1">
-            </p>
-            <p>
-                <input  type="number"
-                        class="form-control"
-                        placeholder="wzrost w centymetrach"
-                        data-ng-model="height"
-                        min="0"
-                        step="1">
-            </p>
-            <p class="yourBMI">
-                {{ (weight>0) && (height>0) ? "Twoje BMI: " + weight/(height/100*height/100) : null }}
-            </p>
-            <div class="infoBMI">
-                <p><strong>Zakresy wartości BMI:</strong></p>
-                <p>mniej niż 16 - wygłodzenie</p>
-                <p>16 - 16.99 - wychudzenie</p>
-                <p>17 - 18.49 - niedowaga</p>
-                <p>18.5 - 24.99 - wartość prawidłowa</p>
-                <p>25 - 29.99 - nadwaga</p>
-                <p>30 - 34.99 - I stopień otyłości</p>
-                <p>35 - 39.99 - II stopień otyłości</p>
-                <p>powyżej 40 - otyłość skrajna</p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>
+                        <input  type="number"
+                                class="form-control"
+                                placeholder="waga w kilogramach"
+                                data-ng-model="weight"
+                                min="0"
+                                step="1">
+                    </p>
+                    <p>
+                        <input  type="number"
+                                class="form-control"
+                                placeholder="wzrost w centymetrach"
+                                data-ng-model="height"
+                                min="0"
+                                step="1">
+                    </p>
+                    <p class="yourBMI">
+                        {{ (weight>0) && (height>0) ? "Twoje BMI: " + (weight/(height/100*height/100) | number : 2) : null }}
+                    </p>
+                </div>
+                <div class="col-sm-6 infoBMI">
+                    <table>
+                        <tr>
+                            <th>Zakresy wartości BMI</th>
+                            <th>Znaczenie zakresu</th>
+                        </tr>
+                        <tr>
+                            <td>mniej niż 16</td>
+                            <td>wygłodzenie</td>
+                        </tr>
+                        <tr>
+                            <td>16 - 16.99</td>
+                            <td>wychudzenie</td>
+                        </tr>
+                        <tr>
+                            <td>17 - 18.49</td>
+                            <td>niedowaga</td>
+                        </tr>
+                        <tr>
+                            <td>18.5 - 24.99</td>
+                            <td>wartość prawidłowa</td>
+                        </tr>
+                        <tr>
+                            <td>25 - 29.99</td>
+                            <td>nadwaga</td>
+                        </tr>
+                        <tr>
+                            <td>30 - 34.99</td>
+                            <td>I stopień otyłości</td>
+                        </tr>
+                        <tr>
+                            <td>35 - 39.99</td>
+                            <td>II stopień otyłości</td>
+                        </tr>
+                        <tr>
+                            <td>powyżej 40</td>
+                            <td>otyłość skrajna</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="footer container">
-            © Mariusz Mazepa 2020
+            <a href="https://www.maxpixels.net">Background image downloaded from www.maxpixels.net</a>
+            <p>© Mariusz Mazepa 2020</p>
         </div>
     </body>
 </html>
