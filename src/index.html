@@ -10,93 +10,129 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
-    <body data-ng-app="" ng-init="lang='pl'">
+    <body ng-app="" ng-init="lang='pl'">
         <div class="header container" ng-switch="lang">
             <h1 ng-switch-when="pl">Kalkulator wskaźnika BMI</h1>
             <h1 ng-switch-when="eng">BMI calculator</h1>
         </div>
-        <div class="app container">
+        <nav class="navbar" ng-init="page='home'">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <button ng-click="page='home'">
+                            <span class="glyphicon glyphicon-home"></span>
+                            Home
+                        </button>
+                    </li>
+                    <li>
+                        <button ng-click="page='info'">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                            Info
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="app container" ng-switch="page">
             <form class="language_settings">
                  <img src="assets/images/iconfinder_PL_167782.png" alt="(Polish Flag)">
                  Polski <input type="radio" ng-model="lang" value="pl" checked="checked">
                  <img src="assets/images/iconfinder_US_167805.png" alt="(American Flag)">
                  English <input type="radio" ng-model="lang" value="eng">
             </form>
-            <div class="row">
-                <div class="col-sm-6">
-                    <p>
-                        <input  type="number"
-                                class="form-control"
-                                placeholder="{{ lang==='pl' ? 'waga w kilogramach' : 'weight in kilograms' }}"
-                                data-ng-model="weight"
-                                min="0"
-                                step="1">
-                    </p>
-                    <p>
-                        <input  type="number"
-                                class="form-control"
-                                placeholder="{{ lang==='pl' ? 'wzrost w centymetrach' : 'height in centimeters' }}"
-                                data-ng-model="height"
-                                min="0"
-                                step="1">
-                    </p>
-                    <p class="yourBMI" ng-if="(weight>0) && (height>0)">
-                        {{ (lang==='pl') ? "Twoje BMI: " : "Your BMI: " }}
-                        {{ (weight/(height/100*height/100) | number : 2) }}
-                    </p>
+            <div ng-switch-when="home">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>
+                            <input  type="number"
+                                    class="form-control"
+                                    placeholder="{{ lang==='pl' ? 'waga w kilogramach' : 'weight in kilograms' }}"
+                                    ng-model="weight"
+                                    min="0"
+                                    step="1">
+                        </p>
+                        <p>
+                            <input  type="number"
+                                    class="form-control"
+                                    placeholder="{{ lang==='pl' ? 'wzrost w centymetrach' : 'height in centimeters' }}"
+                                    ng-model="height"
+                                    min="0"
+                                    step="1">
+                        </p>
+                        <p class="yourBMI" ng-if="(weight>0) && (height>0)">
+                            {{ (lang==='pl') ? "Twoje BMI: " : "Your BMI: " }}
+                            {{ (weight/(height/100*height/100) | number : 2) }}
+                        </p>
+                    </div>
+                    <div class="col-sm-6 infoBMI">
+                        <table ng-switch="lang">
+                            <tr>
+                                <th ng-switch-when="pl">Zakresy wartości BMI</th>
+                                <th ng-switch-when="pl">Znaczenie zakresu</th>
+                                <th ng-switch-when="eng">Range of BMI values</th>
+                                <th ng-switch-when="eng">Meaning of range</th>
+                            </tr>
+                            <tr>
+                                <td ng-switch-when="pl">mniej niż 16</td>
+                                <td ng-switch-when="pl">wygłodzenie</td>
+                                <td ng-switch-when="eng">less than 16</td>
+                                <td ng-switch-when="eng">starvation</td>
+                            </tr>
+                            <tr>
+                                <td>16 - 16.99</td>
+                                <td ng-switch-when="pl">wychudzenie</td>
+                                <td ng-switch-when="eng">emaciation</td>
+                            </tr>
+                            <tr>
+                                <td>17 - 18.49</td>
+                                <td ng-switch-when="pl">niedowaga</td>
+                                <td ng-switch-when="eng">underweight</td>
+                            </tr>
+                            <tr>
+                                <td>18.5 - 24.99</td>
+                                <td ng-switch-when="pl">wartość prawidłowa</td>
+                                <td ng-switch-when="eng">correct value</td>
+                            </tr>
+                            <tr>
+                                <td>25 - 29.99</td>
+                                <td ng-switch-when="pl">nadwaga</td>
+                                <td ng-switch-when="eng">overweight</td>
+                            </tr>
+                            <tr>
+                                <td>30 - 34.99</td>
+                                <td ng-switch-when="pl">I stopień otyłości</td>
+                                <td ng-switch-when="eng">I degree of obesity</td>
+                            </tr>
+                            <tr>
+                                <td>35 - 39.99</td>
+                                <td ng-switch-when="pl">II stopień otyłości</td>
+                                <td ng-switch-when="eng">II degree of obesity</td>
+                            </tr>
+                            <tr>
+                                <td ng-switch-when="pl">powyżej 40</td>
+                                <td ng-switch-when="pl">otyłość skrajna</td>
+                                <td ng-switch-when="eng">more than 40</td>
+                                <td ng-switch-when="eng">extreme obesity</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-                <div class="col-sm-6 infoBMI">
-                    <table ng-switch="lang">
-                        <tr>
-                            <th ng-switch-when="pl">Zakresy wartości BMI</th>
-                            <th ng-switch-when="pl">Znaczenie zakresu</th>
-                            <th ng-switch-when="eng">Range of BMI values</th>
-                            <th ng-switch-when="eng">Meaning of range</th>
-                        </tr>
-                        <tr>
-                            <td ng-switch-when="pl">mniej niż 16</td>
-                            <td ng-switch-when="pl">wygłodzenie</td>
-                            <td ng-switch-when="eng">less than 16</td>
-                            <td ng-switch-when="eng">starvation</td>
-                        </tr>
-                        <tr>
-                            <td>16 - 16.99</td>
-                            <td ng-switch-when="pl">wychudzenie</td>
-                            <td ng-switch-when="eng">emaciation</td>
-                        </tr>
-                        <tr>
-                            <td>17 - 18.49</td>
-                            <td ng-switch-when="pl">niedowaga</td>
-                            <td ng-switch-when="eng">underweight</td>
-                        </tr>
-                        <tr>
-                            <td>18.5 - 24.99</td>
-                            <td ng-switch-when="pl">wartość prawidłowa</td>
-                            <td ng-switch-when="eng">correct value</td>
-                        </tr>
-                        <tr>
-                            <td>25 - 29.99</td>
-                            <td ng-switch-when="pl">nadwaga</td>
-                            <td ng-switch-when="eng">overweight</td>
-                        </tr>
-                        <tr>
-                            <td>30 - 34.99</td>
-                            <td ng-switch-when="pl">I stopień otyłości</td>
-                            <td ng-switch-when="eng">I degree of obesity</td>
-                        </tr>
-                        <tr>
-                            <td>35 - 39.99</td>
-                            <td ng-switch-when="pl">II stopień otyłości</td>
-                            <td ng-switch-when="eng">II degree of obesity</td>
-                        </tr>
-                        <tr>
-                            <td ng-switch-when="pl">powyżej 40</td>
-                            <td ng-switch-when="pl">otyłość skrajna</td>
-                            <td ng-switch-when="eng">more than 40</td>
-                            <td ng-switch-when="eng">extreme obesity</td>
-                        </tr>
-                    </table>
-                </div>
+            </div>
+            <div ng-switch-when="info" ng-switch="lang" class="definition">
+                <p ng-switch-when="pl">
+                    Wskaźnik masy ciała (ang. body mass index, BMI), także wskaźnik
+                    Queteleta II – współczynnik powstały przez podzielenie masy ciała
+                    podanej w kilogramach przez kwadrat wysokości podanej w metrach.
+                    Klasyfikacja (zakres wartości) wskaźnika BMI została opracowana
+                    wyłącznie dla dorosłych i nie może być stosowana u dzieci.
+                </p>
+                <p ng-switch-when="eng">
+                    Body mass index (BMI) is a value derived from the mass (weight)
+                    and height of a person. The BMI is defined as the body mass
+                    divided by the square of the body height, and is universally
+                    expressed in units of kg/m2, resulting from mass in kilograms
+                    and height in metres.
+                </p>
             </div>
         </div>
         <div class="footer container" ng-switch="lang">

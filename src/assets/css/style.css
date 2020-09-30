@@ -13,6 +13,24 @@ html body .header {
 html body .header h1 {
   font-weight: bold;
 }
+html body .navbar {
+  background: linear-gradient(90deg, #000034, #00b2b3, #003e3e);
+  padding: 5px;
+  border-radius: 0px;
+  margin-bottom: 0px;
+}
+html body .navbar button {
+  color: #cfcfcf;
+  font-size: 20px;
+  padding: 10px;
+  background: none;
+  border: none;
+  margin-right: 10px;
+}
+html body .navbar button:hover {
+  color: #333333;
+  background-color: #cfcfcf;
+}
 html body .app {
   padding: 15px;
   width: 100%;
@@ -83,4 +101,10 @@ html body .footer {
 }
 html body .footer a {
   display: block;
+}
+.definition {
+  text-align: justify;
+  padding: 15px;
+  color: #dcdcdc;
+  font-size: 20px;
 }

@@ -14,6 +14,25 @@ html {
       }
     }
 
+    .navbar {
+      background: linear-gradient(90deg, darken(navy, 15%), darken(cyan, 15%), darken(darkcyan, 15%));
+      padding: 5px;
+      border-radius: 0px;
+      margin-bottom: 0px;
+      button {
+        color: darken(whitesmoke, 15%);
+        font-size: 20px;
+        padding: 10px;
+        background: none;
+        border: none;
+        margin-right: 10px;
+      }
+      button:hover {
+        color: lighten(black, 20%);
+        background-color: darken(whitesmoke, 15%);
+      }
+    }
+
     .app {
       width: 100%;
       padding: 15px;
@@ -86,6 +105,13 @@ html {
       }
     }
   }
+}
+
+.definition {
+  text-align: justify;
+  padding: 15px;
+  color: darken(whitesmoke, 10%);
+  font-size: 20px;
 }
 
 .ribbon(@back-color, @font-color) {
