@@ -23,12 +23,14 @@ html body .app {
   background-repeat: repeat-y;
   background-size: 100%;
 }
-html body .app form {
-  padding: 10px;
-  color: #cfcfcf;
+html body .app form,
+html body .app .language_settings {
+  color: #8f8f8f;
   font-weight: bold;
   font-size: 20px;
-  text-align: right;
+  position: absolute;
+  right: 10px;
+  top: 25px;
 }
 html body .app p input {
   width: 100%;
@@ -78,4 +80,7 @@ html body .footer {
   color: dimgray;
   text-align: center;
   margin-top: 15px;
+}
+html body .footer a {
+  display: block;
 }

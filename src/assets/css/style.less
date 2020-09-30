@@ -22,12 +22,13 @@ html {
       background-image: url("../images/MaxPixel.net-Green-Texture-Background-Triangle-Low-Poly-1239778.jpg") !important;
       background-repeat: repeat-y;
       background-size: 100%;
-      form {
-        padding: 10px;
-        color: darken(whitesmoke, 15%);
+      form, .language_settings {
+        color: darken(whitesmoke, 40%);
         font-weight: bold;
         font-size: 20px;
-        text-align: right;
+        position: absolute;
+        right: 10px;
+        top: 25px;
       }
       p {
         input {
@@ -80,6 +81,9 @@ html {
       .ribbon(whitesmoke, dimgray);
       text-align: center;
       margin-top: 15px;
+      a {
+        display: block;
+      }
     }
   }
 }

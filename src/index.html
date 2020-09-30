@@ -10,21 +10,24 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
-    <body>
-        <div class="header container">
-            <h1>Kalkulator wskaźnika BMI</h1>
+    <body data-ng-app="" ng-init="lang='pl'">
+        <div class="header container" ng-switch="lang">
+            <h1 ng-switch-when="pl">Kalkulator wskaźnika BMI</h1>
+            <h1 ng-switch-when="eng">BMI calculator</h1>
         </div>
-        <div class="app container" data-ng-app="">
-            <form ng-init="lang='pl'">
-                Polski <input type="radio" ng-model="lang" value="pl" checked="checked">
-                English <input type="radio" ng-model="lang" value="eng">
+        <div class="app container">
+            <form class="language_settings">
+                 <img src="assets/images/iconfinder_PL_167782.png" alt="(Polish Flag)">
+                 Polski <input type="radio" ng-model="lang" value="pl" checked="checked">
+                 <img src="assets/images/iconfinder_US_167805.png" alt="(American Flag)">
+                 English <input type="radio" ng-model="lang" value="eng">
             </form>
             <div class="row">
                 <div class="col-sm-6">
                     <p>
                         <input  type="number"
                                 class="form-control"
-                                placeholder="waga w kilogramach"
+                                placeholder="{{ lang==='pl' ? 'waga w kilogramach' : 'weight in kilograms' }}"
                                 data-ng-model="weight"
                                 min="0"
                                 step="1">
@@ -32,13 +35,14 @@
                     <p>
                         <input  type="number"
                                 class="form-control"
-                                placeholder="wzrost w centymetrach"
+                                placeholder="{{ lang==='pl' ? 'wzrost w centymetrach' : 'height in centimeters' }}"
                                 data-ng-model="height"
                                 min="0"
                                 step="1">
                     </p>
-                    <p class="yourBMI">
-                        {{ (weight>0) && (height>0) ? "Twoje BMI: " + (weight/(height/100*height/100) | number : 2) : null }}
+                    <p class="yourBMI" ng-if="(weight>0) && (height>0)">
+                        {{ (lang==='pl') ? "Twoje BMI: " : "Your BMI: " }}
+                        {{ (weight/(height/100*height/100) | number : 2) }}
                     </p>
                 </div>
                 <div class="col-sm-6 infoBMI">
@@ -95,8 +99,11 @@
                 </div>
             </div>
         </div>
-        <div class="footer container">
-            <a href="https://www.maxpixels.net">Background image downloaded from www.maxpixels.net</a>
+        <div class="footer container" ng-switch="lang">
+            <a href="https://www.maxpixels.net" ng-switch-when="pl">Grafika w tle pobrana z www.maxpixels.net</a>
+            <a href="https://www.maxpixels.net" ng-switch-when="eng">Background image downloaded from www.maxpixels.net</a>
+            <a href="https://www.iconfinder.com" ng-switch-when="pl">Ikony flag pobrane z www.iconfinder.com</a>
+            <a href="https://www.iconfinder.com" ng-switch-when="eng">Flag icons downloaded from www.iconfinder.com</a>
             <p>© Mariusz Mazepa 2020</p>
         </div>
     </body>
