@@ -1,3 +1,14 @@
+@media only screen and (max-width: 750px) {
+  body {
+    margin-top: 50px !important;
+  }
+  body .app {
+    background: linear-gradient(to right, darkcyan, seagreen) !important;
+  }
+  body .app p input {
+    font-size: 20px !important;
+  }
+}
 html {
   min-height: 100vh;
 }
@@ -34,8 +45,8 @@ html body .navbar button:hover {
 html body .app {
   width: 100%;
   padding: 15px;
-  background-image: linear-gradient(to right, darkcyan, seagreen) !important;
-  background-image: url("../images/MaxPixel.net-Green-Texture-Background-Triangle-Low-Poly-1239778.jpg") !important;
+  background: linear-gradient(to right, darkcyan, seagreen);
+  background-image: url("../images/MaxPixel.net-Green-Texture-Background-Triangle-Low-Poly-1239778.jpg");
   background-repeat: repeat-y;
   background-size: 100%;
 }

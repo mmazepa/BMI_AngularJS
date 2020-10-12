@@ -10,6 +10,23 @@
   width: 100%;
 }
 
+@media only screen and (max-width: 750px) {
+  body {
+    margin-top: 50px !important;
+
+    .app {
+      background: linear-gradient(to right, darkcyan, seagreen) !important;
+
+      p {
+        input {
+          font-size: 20px !important;
+        }
+      }
+    }
+  }
+
+}
+
 html {
   min-height: 100vh;
 
@@ -48,8 +65,8 @@ html {
     .app {
       width: 100%;
       padding: 15px;
-      background-image: linear-gradient(to right, darkcyan, seagreen) !important;
-      background-image: url("../images/MaxPixel.net-Green-Texture-Background-Triangle-Low-Poly-1239778.jpg") !important;
+      background: linear-gradient(to right, darkcyan, seagreen);
+      background-image: url("../images/MaxPixel.net-Green-Texture-Background-Triangle-Low-Poly-1239778.jpg");
       background-repeat: repeat-y;
       background-size: 100%;
 
@@ -120,6 +137,7 @@ html {
       .ribbon(whitesmoke, dimgray);
       text-align: center;
       margin-top: 15px;
+
       a {
         display: block;
       }
