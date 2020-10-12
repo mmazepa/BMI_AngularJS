@@ -5,9 +5,9 @@ html body {
   background-color: whitesmoke !important;
 }
 html body .header {
-  width: 100%;
   background-color: whitesmoke;
   color: navy;
+  width: 100%;
   text-shadow: 2px 2px lightblue;
 }
 html body .header h1 {
@@ -28,15 +28,13 @@ html body .navbar button {
   margin-right: 10px;
 }
 html body .navbar button:hover {
-  color: #333333;
   background-color: #cfcfcf;
+  color: #333333;
 }
 html body .app {
-  padding: 15px;
   width: 100%;
-  background-color: #ccffff;
-  color: black;
-  background-image: linear-gradient(to right, #ccffff, silver) !important;
+  padding: 15px;
+  background-image: linear-gradient(to right, darkcyan, seagreen) !important;
   background-image: url("../images/MaxPixel.net-Green-Texture-Background-Triangle-Low-Poly-1239778.jpg") !important;
   background-repeat: repeat-y;
   background-size: 100%;
@@ -65,10 +63,10 @@ html body .app .yourBMI {
   color: white;
 }
 html body .app .infoBMI table {
-  width: 100%;
-  font-size: 20px;
   background-color: #72bcd4;
   color: #333333;
+  width: 100%;
+  font-size: 20px;
   opacity: 0.75;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -83,7 +81,7 @@ html body .app .infoBMI table tr:first-child {
 }
 html body .app .infoBMI table tr:not(:first-child):hover {
   background-color: #8080ff !important;
-  color: navy;
+  color: navy !important;
   transition: 0.5s;
 }
 html body .app .infoBMI table tr:nth-child(even):not(:first-child) {
@@ -93,9 +91,9 @@ html body .app .infoBMI table tr:nth-child(odd):not(:first-child) {
   background-color: #c1e1ec;
 }
 html body .footer {
-  width: 100%;
   background-color: whitesmoke;
   color: dimgray;
+  width: 100%;
   text-align: center;
   margin-top: 15px;
 }
