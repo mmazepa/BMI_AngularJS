@@ -11,8 +11,6 @@
 }
 html {
   min-height: 100vh;
-}
-html body {
   background-color: whitesmoke !important;
 }
 html body .header {

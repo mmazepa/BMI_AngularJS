@@ -10,12 +10,11 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
-    <body ng-app="" ng-init="lang='pl'">
-        <div class="header container" ng-switch="lang">
-            <h1 ng-switch-when="pl">Kalkulator wskaźnika BMI</h1>
-            <h1 ng-switch-when="eng">BMI calculator</h1>
+    <body ng-app="BMI_App" ng_controller="BMI_Controller">
+        <div class="header container">
+            <h1>{{ pageTitle }}</h1>
         </div>
-        <nav class="navbar" ng-init="page='home'">
+        <nav class="navbar">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
                     <li class="active">
@@ -36,9 +35,9 @@
         <div class="app container" ng-switch="page">
             <form class="language_settings">
                  <img src="assets/images/iconfinder_PL_167782.png" alt="(Polish Flag)">
-                 Polski <input type="radio" ng-model="lang" value="pl" checked="checked">
+                 Polski <input type="radio" ng-model="lang" ng-change="changeLanguage()" value="pl" checked="checked">
                  <img src="assets/images/iconfinder_US_167805.png" alt="(American Flag)">
-                 English <input type="radio" ng-model="lang" value="eng">
+                 English <input type="radio" ng-model="lang" ng-change="changeLanguage()" value="eng">
             </form>
             <div ng-switch-when="home">
                 <div class="row">
@@ -46,7 +45,7 @@
                         <p>
                             <input  type="number"
                                     class="form-control"
-                                    placeholder="{{ lang==='pl' ? 'waga w kilogramach' : 'weight in kilograms' }}"
+                                    placeholder="{{ weightPlaceholder }}"
                                     ng-model="weight"
                                     min="0"
                                     step="1">
@@ -54,93 +53,136 @@
                         <p>
                             <input  type="number"
                                     class="form-control"
-                                    placeholder="{{ lang==='pl' ? 'wzrost w centymetrach' : 'height in centimeters' }}"
+                                    placeholder="{{ heightPlaceholder }}"
                                     ng-model="height"
                                     min="0"
                                     step="1">
                         </p>
                         <p class="yourBMI" ng-if="(weight>0) && (height>0)">
-                            {{ (lang==='pl') ? "Twoje BMI: " : "Your BMI: " }}
+                            {{ yourBMI_label }}
                             {{ (weight/(height/100*height/100) | number : 2) }}
                         </p>
                     </div>
                     <div class="col-sm-6 infoBMI">
                         <table ng-switch="lang">
                             <tr>
-                                <th ng-switch-when="pl">Zakresy wartości BMI</th>
-                                <th ng-switch-when="pl">Znaczenie zakresu</th>
-                                <th ng-switch-when="eng">Range of BMI values</th>
-                                <th ng-switch-when="eng">Meaning of range</th>
+                                <th>{{ tabHeadLabel[0] }}</th>
+                                <th>{{ tabHeadLabel[1] }}</th>
                             </tr>
                             <tr>
-                                <td ng-switch-when="pl">mniej niż 16</td>
-                                <td ng-switch-when="pl">wygłodzenie</td>
-                                <td ng-switch-when="eng">less than 16</td>
-                                <td ng-switch-when="eng">starvation</td>
+                                <td>{{ tableOfBMI[0][0] }}</td>
+                                <td>{{ tableOfBMI[0][1] }}</td>
                             </tr>
                             <tr>
-                                <td>16 - 16.99</td>
-                                <td ng-switch-when="pl">wychudzenie</td>
-                                <td ng-switch-when="eng">emaciation</td>
+                                <td>{{ tableOfBMI[1][0] }}</td>
+                                <td>{{ tableOfBMI[1][1] }}</td>
                             </tr>
                             <tr>
-                                <td>17 - 18.49</td>
-                                <td ng-switch-when="pl">niedowaga</td>
-                                <td ng-switch-when="eng">underweight</td>
+                                <td>{{ tableOfBMI[2][0] }}</td>
+                                <td>{{ tableOfBMI[2][1] }}</td>
                             </tr>
                             <tr>
-                                <td>18.5 - 24.99</td>
-                                <td ng-switch-when="pl">wartość prawidłowa</td>
-                                <td ng-switch-when="eng">correct value</td>
+                                <td>{{ tableOfBMI[3][0] }}</td>
+                                <td>{{ tableOfBMI[3][1] }}</td>
                             </tr>
                             <tr>
-                                <td>25 - 29.99</td>
-                                <td ng-switch-when="pl">nadwaga</td>
-                                <td ng-switch-when="eng">overweight</td>
+                                <td>{{ tableOfBMI[4][0] }}</td>
+                                <td>{{ tableOfBMI[4][1] }}</td>
                             </tr>
                             <tr>
-                                <td>30 - 34.99</td>
-                                <td ng-switch-when="pl">I stopień otyłości</td>
-                                <td ng-switch-when="eng">I degree of obesity</td>
+                                <td>{{ tableOfBMI[5][0] }}</td>
+                                <td>{{ tableOfBMI[5][1] }}</td>
                             </tr>
                             <tr>
-                                <td>35 - 39.99</td>
-                                <td ng-switch-when="pl">II stopień otyłości</td>
-                                <td ng-switch-when="eng">II degree of obesity</td>
+                                <td>{{ tableOfBMI[6][0] }}</td>
+                                <td>{{ tableOfBMI[6][1] }}</td>
                             </tr>
                             <tr>
-                                <td ng-switch-when="pl">powyżej 40</td>
-                                <td ng-switch-when="pl">otyłość skrajna</td>
-                                <td ng-switch-when="eng">more than 40</td>
-                                <td ng-switch-when="eng">extreme obesity</td>
+                                <td>{{ tableOfBMI[7][0] }}</td>
+                                <td>{{ tableOfBMI[7][1] }}</td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
-            <div ng-switch-when="info" ng-switch="lang" class="definition">
-                <p ng-switch-when="pl">
-                    Wskaźnik masy ciała (ang. body mass index, BMI), także wskaźnik
-                    Queteleta II – współczynnik powstały przez podzielenie masy ciała
-                    podanej w kilogramach przez kwadrat wysokości podanej w metrach.
-                    Klasyfikacja (zakres wartości) wskaźnika BMI została opracowana
-                    wyłącznie dla dorosłych i nie może być stosowana u dzieci.
-                </p>
-                <p ng-switch-when="eng">
-                    Body mass index (BMI) is a value derived from the mass (weight)
-                    and height of a person. The BMI is defined as the body mass
-                    divided by the square of the body height, and is universally
-                    expressed in units of kg/m2, resulting from mass in kilograms
-                    and height in metres.
-                </p>
+            <div ng-switch-when="info" class="definition">
+                <p>{{ definitionOfBMI }}</p>
             </div>
         </div>
-        <div class="footer container" ng-switch="lang">
-            <a href="https://www.maxpixels.net" ng-switch-when="pl">Grafika w tle pobrana z www.maxpixels.net</a>
-            <a href="https://www.maxpixels.net" ng-switch-when="eng">Background image downloaded from www.maxpixels.net</a>
-            <a href="https://www.iconfinder.com" ng-switch-when="pl">Ikony flag pobrane z www.iconfinder.com</a>
-            <a href="https://www.iconfinder.com" ng-switch-when="eng">Flag icons downloaded from www.iconfinder.com</a>
+        <div class="footer container">
+            <a href="https://www.maxpixels.net">{{ graphicsLinkLabel }}</a>
+            <a href="https://www.iconfinder.com">{{ iconsLinkLabel }}</a>
             <p>© Mariusz Mazepa 2020</p>
         </div>
+
+        <script type="text/javascript">
+            var app = angular.module("BMI_App", []);
+            app.controller("BMI_Controller", function($scope) {
+                $scope.lang = "pl";
+                $scope.page = "home";
+
+                function defaultValues() {
+                    $scope.pageTitle = "Kalkulator wskaźnika BMI";
+                    $scope.weightPlaceholder = "waga w kilogramach";
+                    $scope.heightPlaceholder = "wzrost w centymetrach";
+                    $scope.yourBMI_label = "Twoje BMI: ";
+                    $scope.tabHeadLabel = [
+                        "Zakresy wartości BMI",
+                        "Znaczenie zakresu"
+                    ];
+                    $scope.tableOfBMI = [
+                        ["mniej niż 16",  "wygłodzenie"],
+                        ["16 - 16.99",    "wychudzenie"],
+                        ["17 - 18.49",    "niedowaga"],
+                        ["18.5 - 24.99",  "wartość prawidłowa"],
+                        ["25 - 29.99",    "nadwaga"],
+                        ["30 - 34.99",    "I stopień otyłości"],
+                        ["35 - 39.99",    "II stopień otyłości"],
+                        ["powyżej 40",    "otyłość skrajna"]
+                    ];
+                    $scope.definitionOfBMI = "Wskaźnik masy ciała (ang. body mass " +
+                        "index, BMI), także wskaźnik Queteleta II – współczynnik " +
+                        "powstały przez podzielenie masy ciała podanej w kilogramach " +
+                        "przez kwadrat wysokości podanej w metrach. Klasyfikacja " +
+                        "(zakres wartości) wskaźnika BMI została opracowana wyłącznie " +
+                        "dla dorosłych i nie może być stosowana u dzieci.";
+                    $scope.graphicsLinkLabel = "Grafika w tle pobrana z www.maxpixels.net";
+                    $scope.iconsLinkLabel = "Ikony flag pobrane z www.iconfinder.com";
+                }
+                defaultValues();
+
+                $scope.changeLanguage = function() {
+                    if ($scope.lang === "pl") {
+                        defaultValues();
+                    } else if ($scope.lang === "eng") {
+                        $scope.pageTitle = "BMI Calculator";
+                        $scope.weightPlaceholder = "weight in kilograms";
+                        $scope.heightPlaceholder = "height in centimeters";
+                        $scope.yourBMI_label = "Your BMI: ";
+                        $scope.tabHeadLabel = [
+                            "Range of BMI values",
+                            "Meaning of range"
+                        ];
+                        $scope.tableOfBMI = [
+                            ["less than 16",  "starvation"],
+                            ["16 - 16.99",    "emaciation"],
+                            ["17 - 18.49",    "underweight"],
+                            ["18.5 - 24.99",  "correct value"],
+                            ["25 - 29.99",    "overweight"],
+                            ["30 - 34.99",    "I degree of obesity"],
+                            ["35 - 39.99",    "II degree of obesity"],
+                            ["more than 40",  "extreme obesity"]
+                        ];
+                        $scope.definitionOfBMI = "Body mass index (BMI) is a value derived " +
+                            "from the mass (weight) and height of a person. The BMI is defined " +
+                            "as the body mass divided by the square of the body height, and is " +
+                            "universally expressed in units of kg/m2, resulting from mass in" +
+                            "kilograms and height in metres.";
+                        $scope.graphicsLinkLabel = "Background image downloaded from www.maxpixels.net";
+                        $scope.iconsLinkLabel = "Flag icons downloaded from www.iconfinder.com";
+                    }
+                }
+            });
+        </script>
     </body>
 </html>
