@@ -30,6 +30,7 @@ app.controller("BMI_Controller", function($scope) {
             "dla dorosłych i nie może być stosowana u dzieci.";
         $scope.graphicsLinkLabel = "Grafika w tle pobrana z www.maxpixels.net";
         $scope.iconsLinkLabel = "Ikony flag pobrane z www.iconfinder.com";
+        $scope.faviconLinkLabel = "Favicon stworzony przez Freepik z www.flaticon.com";
     }
     defaultValues();
 
@@ -62,6 +63,7 @@ app.controller("BMI_Controller", function($scope) {
                 "kilograms and height in metres.";
             $scope.graphicsLinkLabel = "Background image downloaded from www.maxpixels.net";
             $scope.iconsLinkLabel = "Flag icons downloaded from www.iconfinder.com";
+            $scope.faviconLinkLabel = "Favicon made by Freepik from www.flaticon.com";
         }
     };
 });
