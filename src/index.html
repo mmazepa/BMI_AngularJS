@@ -18,13 +18,13 @@
         <nav class="navbar">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
-                    <li class="active">
+                    <li class="{{ (page==='home') ? 'active' : '' }}">
                         <button ng-click="page='home'">
                             <span class="glyphicon glyphicon-home"></span>
                             Home
                         </button>
                     </li>
-                    <li>
+                    <li class="{{ (page==='info') ? 'active' : '' }}">
                         <button ng-click="page='info'">
                             <span class="glyphicon glyphicon-info-sign"></span>
                             Info
@@ -35,9 +35,9 @@
         </nav>
         <div class="app container" ng-switch="page">
             <form class="language_settings">
-                 <img src="assets/images/iconfinder_PL_167782.png" alt="(Polish Flag)">
+                 <img src="assets/images/flag_PL.png" alt="(Polish Flag)">
                  Polski <input type="radio" ng-model="lang" ng-change="changeLanguage()" value="pl" checked="checked">
-                 <img src="assets/images/iconfinder_US_167805.png" alt="(American Flag)">
+                 <img src="assets/images/flag_US.png" alt="(American Flag)">
                  English <input type="radio" ng-model="lang" ng-change="changeLanguage()" value="eng">
             </form>
             <div ng-switch-when="home">
@@ -70,37 +70,9 @@
                                 <th>{{ tabHeadLabel[0] }}</th>
                                 <th>{{ tabHeadLabel[1] }}</th>
                             </tr>
-                            <tr>
-                                <td>{{ tableOfBMI[0][0] }}</td>
-                                <td>{{ tableOfBMI[0][1] }}</td>
-                            </tr>
-                            <tr>
-                                <td>{{ tableOfBMI[1][0] }}</td>
-                                <td>{{ tableOfBMI[1][1] }}</td>
-                            </tr>
-                            <tr>
-                                <td>{{ tableOfBMI[2][0] }}</td>
-                                <td>{{ tableOfBMI[2][1] }}</td>
-                            </tr>
-                            <tr>
-                                <td>{{ tableOfBMI[3][0] }}</td>
-                                <td>{{ tableOfBMI[3][1] }}</td>
-                            </tr>
-                            <tr>
-                                <td>{{ tableOfBMI[4][0] }}</td>
-                                <td>{{ tableOfBMI[4][1] }}</td>
-                            </tr>
-                            <tr>
-                                <td>{{ tableOfBMI[5][0] }}</td>
-                                <td>{{ tableOfBMI[5][1] }}</td>
-                            </tr>
-                            <tr>
-                                <td>{{ tableOfBMI[6][0] }}</td>
-                                <td>{{ tableOfBMI[6][1] }}</td>
-                            </tr>
-                            <tr>
-                                <td>{{ tableOfBMI[7][0] }}</td>
-                                <td>{{ tableOfBMI[7][1] }}</td>
+                            <tr ng-repeat="row in tableOfBMI">
+                                <td>{{ row[0] }}</td>
+                                <td>{{ row[1] }}</td>
                             </tr>
                         </table>
                     </div>
@@ -114,7 +86,7 @@
             <a href="https://www.maxpixels.net">{{ graphicsLinkLabel }}</a>
             <a href="https://www.iconfinder.com">{{ iconsLinkLabel }}</a>
             <a href="https://www.flaticon.com/authors/freepik">{{ faviconLinkLabel }}</a>
-            <p>© Mariusz Mazepa 2020</p>
+            <p>Mariusz Mazepa © 2020</p>
         </div>
         <script type="text/javascript" src="assets/js/BMI_Controller.js"></script>
     </body>

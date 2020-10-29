@@ -25,10 +25,15 @@ html body .header h1 {
 html body .navbar {
   background: linear-gradient(90deg, #000034, #00b2b3, #003e3e);
   padding: 5px;
+  border: none;
   border-radius: 0px;
   margin-bottom: 0px;
 }
-html body .navbar button {
+html body .navbar div ul li button {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  box-shadow: 0px 0px 0px none;
+  transition: 0.5s;
   color: #cfcfcf;
   font-size: 20px;
   padding: 10px;
@@ -36,15 +41,37 @@ html body .navbar button {
   border: none;
   margin-right: 10px;
 }
-html body .navbar button:hover {
+html body .navbar div ul li button:hover {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  box-shadow: 5px 5px 1.25px black;
+  transition: 0.5s;
   background-color: #cfcfcf;
   color: #333333;
+  box-shadow: 2.5px 2.5px 5px darkcyan;
+}
+html body .navbar div ul li.active button {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  box-shadow: 5px 5px 1.25px black;
+  transition: 0.5s;
+  background-color: #a9a9a9;
+  color: #1a1a1a;
+}
+html body .navbar div ul li.active button:hover {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  box-shadow: 5px 5px 1.25px black;
+  transition: 0.5s;
+  background-color: #cfcfcf;
+  color: #333333;
+  box-shadow: 2.5px 2.5px 5px darkcyan;
 }
 html body .app {
   width: 100%;
   padding: 15px;
   background: linear-gradient(to right, darkcyan, seagreen);
-  background-image: url("../images/MaxPixel.net-Green-Texture-Background-Triangle-Low-Poly-1239778.jpg");
+  background-image: url("../images/background.jpg");
   background-repeat: repeat-y;
   background-size: 100%;
 }
@@ -67,9 +94,9 @@ html body .app p input {
 }
 html body .app .yourBMI {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 25px;
   font-size: 200%;
-  color: white;
+  color: whitesmoke;
 }
 html body .app .infoBMI table {
   background-color: #72bcd4;
@@ -99,6 +126,12 @@ html body .app .infoBMI table tr:nth-child(even):not(:first-child) {
 html body .app .infoBMI table tr:nth-child(odd):not(:first-child) {
   background-color: #c1e1ec;
 }
+html body .app .definition {
+  text-align: justify;
+  padding: 15px;
+  color: #dcdcdc;
+  font-size: 20px;
+}
 html body .footer {
   background-color: whitesmoke;
   color: dimgray;
@@ -108,10 +141,4 @@ html body .footer {
 }
 html body .footer a {
   display: block;
-}
-.definition {
-  text-align: justify;
-  padding: 15px;
-  color: #dcdcdc;
-  font-size: 20px;
 }

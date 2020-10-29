@@ -10,6 +10,28 @@
   width: 100%;
 }
 
+.buttons(@radius, @boxShadowPixels, @boxShadowColor) {
+  border-top-left-radius: @radius;
+  border-top-right-radius: @radius;
+  box-shadow: @boxShadowPixels*2 @boxShadowPixels*2 @boxShadowPixels/2 @boxShadowColor;
+  transition: 0.5s;
+}
+
+.navbarButtons(@active) {
+  transition: 0.5s;
+
+  & when(@active = true) {
+    .buttons(15px, 2.5px, black);
+    .colors(darken(whitesmoke, 30%), lighten(black, 10%));
+  }
+
+  & when(@active = false) {
+    .buttons(25px, 2.5px, black);
+    .colors(darken(whitesmoke, 15%), lighten(black, 20%));
+    box-shadow: 2.5px 2.5px 5px darkcyan;
+  }
+}
+
 @media only screen and (max-width: 750px) {
   body {
     margin-top: 50px !important;
@@ -45,19 +67,37 @@ html {
     .navbar {
       background: linear-gradient(90deg, darken(navy, 15%), darken(cyan, 15%), darken(darkcyan, 15%));
       padding: 5px;
+      border: none;
       border-radius: 0px;
       margin-bottom: 0px;
 
-      button {
-        color: darken(whitesmoke, 15%);
-        font-size: 20px;
-        padding: 10px;
-        background: none;
-        border: none;
-        margin-right: 10px;
+      div {
+        ul {
+          li {
+            button {
+              .buttons(0px, 0px, none);
+              color: darken(whitesmoke, 15%);
+              font-size: 20px;
+              padding: 10px;
+              background: none;
+              border: none;
+              margin-right: 10px;
 
-        &:hover {
-          .colors(darken(whitesmoke, 15%), lighten(black, 20%));
+              &:hover {
+                .navbarButtons(false);
+              }
+            }
+
+            &.active {
+              button {
+                .navbarButtons(true);
+
+                &:hover {
+                  .navbarButtons(false);
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -66,7 +106,7 @@ html {
       width: 100%;
       padding: 15px;
       background: linear-gradient(to right, darkcyan, seagreen);
-      background-image: url("../images/MaxPixel.net-Green-Texture-Background-Triangle-Low-Poly-1239778.jpg");
+      background-image: url("../images/background.jpg");
       background-repeat: repeat-y;
       background-size: 100%;
 
@@ -92,9 +132,9 @@ html {
 
       .yourBMI {
         text-align: center;
-        margin-top: 50px;
+        margin-top: 25px;
         font-size: 200%;
-        color: white;
+        color: whitesmoke;
       }
 
       .infoBMI {
@@ -131,6 +171,13 @@ html {
           }
         }
       }
+
+      .definition {
+        text-align: justify;
+        padding: 15px;
+        color: darken(whitesmoke, 10%);
+        font-size: 20px;
+      }
     }
 
     .footer {
@@ -143,11 +190,4 @@ html {
       }
     }
   }
-}
-
-.definition {
-  text-align: justify;
-  padding: 15px;
-  color: darken(whitesmoke, 10%);
-  font-size: 20px;
 }
