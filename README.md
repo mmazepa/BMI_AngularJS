@@ -1,9 +1,19 @@
 # Kalkulator wskaźnika BMI
 
-Drobny projekt wykorzystujący framework **AngularJS**
-do prostej Single Page Application.
+## O aplikacji
 
-Za szatę graficzną w znacznej części odpowiada
-biblioteka **Bootstrap**.
+Aplikacja wylicza w czasie rzeczywistym wartość wskaźnika BMI
+na podstawie wprowadzonych danych (wzrostu i wagi) we wskazanych
+jednostkach.
 
-Własny styl generowany dynamicznie za pomocą języka **Less**.
+**Możliwości aplikacji:**
+* pobieranie od użytkownika danych wejściowych (wzrostu i wagi),
+* walidacja formularza,
+* wyliczanie w czasie rzeczywistym wartości wskaźnika BMI,
+* zmiana wersji językowej między Polską a Angielską.
+
+## Wykorzystane technologie
+
+* framework **AngularJS** do prostej Single Page Application.
+* szata graficzna - w znacznej części biblioteka **Bootstrap**.
+* własny styl generowany dynamicznie - **Less**.
