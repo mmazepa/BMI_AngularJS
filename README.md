@@ -14,6 +14,6 @@ jednostkach.
 
 ## Wykorzystane technologie
 
-* framework **AngularJS** do prostej Single Page Application.
-* szata graficzna - w znacznej części biblioteka **Bootstrap**.
+* framework **AngularJS** do prostej Single Page Application,
+* szata graficzna - w znacznej części biblioteka **Bootstrap**,
 * własny styl generowany dynamicznie - **Less**.

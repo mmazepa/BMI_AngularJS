@@ -49,7 +49,8 @@
                                     placeholder="{{ weightPlaceholder }}"
                                     ng-model="weight"
                                     min="0"
-                                    step="1">
+                                    step="1"
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                         </p>
                         <p>
                             <input  type="number"
@@ -57,7 +58,8 @@
                                     placeholder="{{ heightPlaceholder }}"
                                     ng-model="height"
                                     min="0"
-                                    step="1">
+                                    step="1"
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                         </p>
                         <p class="yourBMI" ng-if="(weight>0) && (height>0)">
                             {{ yourBMI_label }}
