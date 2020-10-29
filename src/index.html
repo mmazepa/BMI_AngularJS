@@ -35,10 +35,10 @@
         </nav>
         <div class="app container" ng-switch="page">
             <form class="language_settings">
-                 <img src="assets/images/flag_PL.png" alt="(Polish Flag)">
-                 Polski <input type="radio" ng-model="lang" ng-change="changeLanguage()" value="pl" checked="checked">
-                 <img src="assets/images/flag_US.png" alt="(American Flag)">
-                 English <input type="radio" ng-model="lang" ng-change="changeLanguage()" value="eng">
+                <img src="assets/images/flag_PL.png" alt="(Polish Flag)">
+                Polski <input type="radio" ng-model="lang" ng-change="changeLanguage()" value="pl" checked="checked">
+                <img src="assets/images/flag_US.png" alt="(American Flag)">
+                English <input type="radio" ng-model="lang" ng-change="changeLanguage()" value="eng">
             </form>
             <div ng-switch-when="home">
                 <div class="row">
@@ -67,12 +67,10 @@
                     <div class="col-sm-6 infoBMI">
                         <table ng-switch="lang">
                             <tr>
-                                <th>{{ tabHeadLabel[0] }}</th>
-                                <th>{{ tabHeadLabel[1] }}</th>
+                                <th ng-repeat="num in [0,1]">{{ tabHeadLabel[num] }}</th>
                             </tr>
                             <tr ng-repeat="row in tableOfBMI">
-                                <td>{{ row[0] }}</td>
-                                <td>{{ row[1] }}</td>
+                                <td ng-repeat="num in [0,1]">{{ row[num] }}</td>
                             </tr>
                         </table>
                     </div>

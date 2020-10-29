@@ -1,9 +1,11 @@
+/* jshint esversion: 6 */
+
 var app = angular.module("BMI_App", []);
-app.controller("BMI_Controller", function($scope) {
+app.controller("BMI_Controller", ($scope) => {
     $scope.lang = "pl";
     $scope.page = "home";
 
-    function defaultValues() {
+    const defaultValues = () => {
         $scope.pageTitle = "Kalkulator wskaźnika BMI";
         $scope.weightPlaceholder = "waga w kilogramach";
         $scope.heightPlaceholder = "wzrost w centymetrach";
@@ -31,10 +33,10 @@ app.controller("BMI_Controller", function($scope) {
         $scope.graphicsLinkLabel = "Grafika w tle pobrana z www.maxpixels.net";
         $scope.iconsLinkLabel = "Ikony flag pobrane z www.iconfinder.com";
         $scope.faviconLinkLabel = "Favicon stworzony przez Freepik z www.flaticon.com";
-    }
+    };
     defaultValues();
 
-    $scope.changeLanguage = function() {
+    $scope.changeLanguage = () => {
         if ($scope.lang === "pl") {
             defaultValues();
         } else if ($scope.lang === "eng") {
