@@ -168,6 +168,12 @@ html {
             &:nth-child(odd):not(:first-child) {
               background-color: lighten(lightblue, 5%);
             }
+
+            &.activeRow {
+              background-color: red !important;
+              color: whitesmoke;
+              font-weight: bold;
+            }
           }
         }
       }
@@ -190,10 +196,4 @@ html {
       }
     }
   }
-}
-
-.activeRow {
-  background-color: red !important;
-  color: whitesmoke;
-  font-weight: bold;
 }

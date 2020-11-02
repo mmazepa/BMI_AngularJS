@@ -10,6 +10,7 @@ jednostkach.
 * pobieranie od użytkownika danych wejściowych (wzrostu i wagi),
 * walidacja formularza,
 * wyliczanie w czasie rzeczywistym wartości wskaźnika BMI,
+* podświetlanie aktualnej wartości wskaźnika BMI w tabeli,
 * zmiana wersji językowej między Polską a Angielską.
 
 ## Wykorzystane technologie

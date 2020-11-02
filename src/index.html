@@ -44,26 +44,30 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <p>
-                            <input  type="number"
+                            <input  id="weight"
+                                    type="number"
                                     class="form-control"
                                     placeholder="{{ weightPlaceholder }}"
                                     ng-model="weight"
                                     min="0"
                                     step="1"
-                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                    ng-change="updateBMI()">
                         </p>
                         <p>
-                            <input  type="number"
+                            <input  id="height"
+                                    type="number"
                                     class="form-control"
                                     placeholder="{{ heightPlaceholder }}"
                                     ng-model="height"
                                     min="0"
                                     step="1"
-                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                    ng-change="updateBMI()">
                         </p>
-                        <p class="yourBMI" ng-if="(weight>0) && (height>0)">
+                        <p class="yourBMI" ng-if="weight > 0 && height > 0">
                             {{ yourBMI_label }}
-                            {{ (weight/(height/100*height/100) | number : 2) }}
+                            {{ bmi | number : 2 }}
                         </p>
                     </div>
                     <div class="col-sm-6 infoBMI">
@@ -72,8 +76,8 @@
                                 <th ng-repeat="num in [0,1]">{{ tabHeadLabel[num] }}</th>
                             </tr>
                             <tr ng-repeat="row in tableOfBMI"
-                                class="{{ ((weight/(height/100*height/100) >= row.from) && (weight/(height/100*height/100) <= row.to)) ? 'activeRow' : '' }}">
-                                <td>{{ row.from }} - {{ row.to }}</td>
+                                ng-class="{'activeRow': bmi >= row.from && bmi <= row.to && weight > 0 && height > 0 }">
+                                <td>{{ row.from | number : 2 }} - {{ row.to | number : 2 }}</td>
                                 <td>{{ row.label }}</td>
                             </tr>
                         </table>

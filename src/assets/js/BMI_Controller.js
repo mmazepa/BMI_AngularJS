@@ -4,6 +4,7 @@ var app = angular.module("BMI_App", []);
 app.controller("BMI_Controller", ($scope) => {
     $scope.lang = "pl";
     $scope.page = "home";
+    $scope.bmi = 0;
 
     const defaultValues = () => {
         $scope.pageTitle = "Kalkulator wskaźnika BMI";
@@ -78,5 +79,12 @@ app.controller("BMI_Controller", ($scope) => {
             $scope.links[1].text = "Flag icons downloaded from www.iconfinder.com";
             $scope.links[2].text = "Favicon made by Freepik from www.flaticon.com";
         }
+    };
+
+    $scope.updateBMI = () => {
+        let weight = document.getElementById("weight").value;
+        let height = document.getElementById("height").value;
+        let bmi = weight/(Math.pow(height/100, 2));
+        $scope.bmi = bmi;
     };
 });

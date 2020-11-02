@@ -126,6 +126,11 @@ html body .app .infoBMI table tr:nth-child(even):not(:first-child) {
 html body .app .infoBMI table tr:nth-child(odd):not(:first-child) {
   background-color: #c1e1ec;
 }
+html body .app .infoBMI table tr.activeRow {
+  background-color: red !important;
+  color: whitesmoke;
+  font-weight: bold;
+}
 html body .app .definition {
   text-align: justify;
   padding: 15px;
@@ -141,9 +146,4 @@ html body .footer {
 }
 html body .footer a {
   display: block;
-}
-.activeRow {
-  background-color: red !important;
-  color: whitesmoke;
-  font-weight: bold;
 }
