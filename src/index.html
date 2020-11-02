@@ -83,9 +83,7 @@
             </div>
         </div>
         <div class="footer container">
-            <a href="https://www.maxpixels.net">{{ graphicsLinkLabel }}</a>
-            <a href="https://www.iconfinder.com">{{ iconsLinkLabel }}</a>
-            <a href="https://www.flaticon.com/authors/freepik">{{ faviconLinkLabel }}</a>
+            <a ng-repeat="link in links" href="{{ link.url }}">{{ link.text }}</a>
             <p>Mariusz Mazepa © 2020</p>
         </div>
         <script type="text/javascript" src="assets/js/BMI_Controller.js"></script>

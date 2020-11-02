@@ -30,9 +30,21 @@ app.controller("BMI_Controller", ($scope) => {
             "przez kwadrat wysokości podanej w metrach. Klasyfikacja " +
             "(zakres wartości) wskaźnika BMI została opracowana wyłącznie " +
             "dla dorosłych i nie może być stosowana u dzieci.";
-        $scope.graphicsLinkLabel = "Grafika w tle pobrana z www.maxpixels.net";
-        $scope.iconsLinkLabel = "Ikony flag pobrane z www.iconfinder.com";
-        $scope.faviconLinkLabel = "Favicon stworzony przez Freepik z www.flaticon.com";
+
+        $scope.links = [
+            {
+                text : "Grafika w tle pobrana z www.maxpixels.net",
+                url : "https://www.maxpixels.net"
+            },
+            {
+                text : "Ikony flag pobrane z www.iconfinder.com",
+                url : "https://www.iconfinder.com"
+            },
+            {
+                text : "Favicon stworzony przez Freepik z www.flaticon.com",
+                url : "https://www.flaticon.com/authors/freepik"
+            }
+        ];
     };
     defaultValues();
 
@@ -63,9 +75,9 @@ app.controller("BMI_Controller", ($scope) => {
                 "as the body mass divided by the square of the body height, and is " +
                 "universally expressed in units of kg/m2, resulting from mass in" +
                 "kilograms and height in metres.";
-            $scope.graphicsLinkLabel = "Background image downloaded from www.maxpixels.net";
-            $scope.iconsLinkLabel = "Flag icons downloaded from www.iconfinder.com";
-            $scope.faviconLinkLabel = "Favicon made by Freepik from www.flaticon.com";
+            $scope.links[0].text = "Background image downloaded from www.maxpixels.net";
+            $scope.links[1].text = "Flag icons downloaded from www.iconfinder.com";
+            $scope.links[2].text = "Favicon made by Freepik from www.flaticon.com";
         }
     };
 });
