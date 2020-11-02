@@ -71,8 +71,10 @@
                             <tr>
                                 <th ng-repeat="num in [0,1]">{{ tabHeadLabel[num] }}</th>
                             </tr>
-                            <tr ng-repeat="row in tableOfBMI">
-                                <td ng-repeat="num in [0,1]">{{ row[num] }}</td>
+                            <tr ng-repeat="row in tableOfBMI"
+                                class="{{ ((weight/(height/100*height/100) >= row.from) && (weight/(height/100*height/100) <= row.to)) ? 'activeRow' : '' }}">
+                                <td>{{ row.from }} - {{ row.to }}</td>
+                                <td>{{ row.label }}</td>
                             </tr>
                         </table>
                     </div>

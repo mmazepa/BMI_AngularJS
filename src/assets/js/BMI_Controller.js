@@ -15,14 +15,14 @@ app.controller("BMI_Controller", ($scope) => {
             "Znaczenie zakresu"
         ];
         $scope.tableOfBMI = [
-            ["mniej niż 16",  "wygłodzenie"],
-            ["16 - 16.99",    "wychudzenie"],
-            ["17 - 18.49",    "niedowaga"],
-            ["18.5 - 24.99",  "wartość prawidłowa"],
-            ["25 - 29.99",    "nadwaga"],
-            ["30 - 34.99",    "I stopień otyłości"],
-            ["35 - 39.99",    "II stopień otyłości"],
-            ["powyżej 40",    "otyłość skrajna"]
+            { from: 0.00, to: 15.99, label: "wygłodzenie" },
+            { from: 16.00, to: 16.99, label: "wychudzenie" },
+            { from: 17.00, to: 18.49, label: "niedowaga" },
+            { from: 18.50, to: 24.99, label: "wartość prawidłowa" },
+            { from: 25.00, to: 29.99, label: "nadwaga" },
+            { from: 30.00, to: 34.99, label: "I stopień otyłości" },
+            { from: 35.00, to: 39.99, label: "II stopień otyłości" },
+            { from: 40.00, to: Infinity, label: "otyłość skrajna" }
         ];
         $scope.definitionOfBMI = "Wskaźnik masy ciała (ang. body mass " +
             "index, BMI), także wskaźnik Queteleta II – współczynnik " +
@@ -60,16 +60,15 @@ app.controller("BMI_Controller", ($scope) => {
                 "Range of BMI values",
                 "Meaning of range"
             ];
-            $scope.tableOfBMI = [
-                ["less than 16",  "starvation"],
-                ["16 - 16.99",    "emaciation"],
-                ["17 - 18.49",    "underweight"],
-                ["18.5 - 24.99",  "correct value"],
-                ["25 - 29.99",    "overweight"],
-                ["30 - 34.99",    "I degree of obesity"],
-                ["35 - 39.99",    "II degree of obesity"],
-                ["more than 40",  "extreme obesity"]
-            ];
+            $scope.tableOfBMI[0].label = "starvation";
+            $scope.tableOfBMI[1].label = "emaciation";
+            $scope.tableOfBMI[2].label = "underweight";
+            $scope.tableOfBMI[3].label = "correct value";
+            $scope.tableOfBMI[4].label = "overweight";
+            $scope.tableOfBMI[5].label = "I degree of obesity";
+            $scope.tableOfBMI[6].label = "II degree of obesity";
+            $scope.tableOfBMI[7].label = "extreme obesity";
+
             $scope.definitionOfBMI = "Body mass index (BMI) is a value derived " +
                 "from the mass (weight) and height of a person. The BMI is defined " +
                 "as the body mass divided by the square of the body height, and is " +

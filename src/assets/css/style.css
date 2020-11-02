@@ -142,3 +142,8 @@ html body .footer {
 html body .footer a {
   display: block;
 }
+.activeRow {
+  background-color: red !important;
+  color: whitesmoke;
+  font-weight: bold;
+}
