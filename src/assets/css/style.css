@@ -127,9 +127,14 @@ html body .app .infoBMI table tr:nth-child(odd):not(:first-child) {
   background-color: #c1e1ec;
 }
 html body .app .infoBMI table tr.activeRow {
-  background-color: red !important;
+  background: linear-gradient(90deg, darkcyan, seagreen, navy) !important;
   color: whitesmoke;
   font-weight: bold;
+  transition: 0.5s;
+}
+html body .app .infoBMI table tr.activeRow:hover {
+  background: linear-gradient(90deg, #00bebe, #3bb16f, #0000b3) !important;
+  color: whitesmoke !important;
 }
 html body .app .definition {
   text-align: justify;

@@ -170,9 +170,15 @@ html {
             }
 
             &.activeRow {
-              background-color: red !important;
+              background: linear-gradient(90deg, darkcyan, seagreen, navy) !important;
               color: whitesmoke;
               font-weight: bold;
+              transition: 0.5s;
+
+              &:hover {
+                background: linear-gradient(90deg, lighten(darkcyan, 10%), lighten(seagreen, 10%), lighten(navy, 10%)) !important;
+                color: whitesmoke !important;
+              }
             }
           }
         }
